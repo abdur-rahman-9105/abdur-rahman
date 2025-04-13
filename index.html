@@ -3,59 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-
+    <title>Password Protected - Website Under Construction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            font-size: 48px;
+            color: #f2b632;
+        }
+        .form-container {
+            margin-top: 20px;
+        }
+        input[type="password"] {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            width: 250px;
+            margin-bottom: 10px;
+            background-color: #333;
+            color: white;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #f2b632;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e1a227;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #f2b632;
+        }
+    </style>
 </head>
 <body>
 
-
-<section class="sec-container rui-mach-archive">
-
     <div class="container">
-        <iframe class="iFrm-sz" src="https://www.youtube.com/embed/4PaWfbjjQ1U?si=cphvjp6yMemvZd_h" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        <h4 class="cls-title">Class-01</h4>
+        <h1>Welcome to Our Website</h1>
+        <p>Please enter the password to proceed.</p>
+        <div class="form-container">
+            <form id="passwordForm" onsubmit="return checkPassword()">
+                <input type="password" id="password" placeholder="Enter Password" required>
+                <br>
+                <button type="submit">Enter</button>
+            </form>
+            <p class="message" id="message"></p>
+        </div>
     </div>
 
-    <!-- <div class="container">
-        <iframe class="iFrm-sz" src="https://www.youtube.com/embed/CfUYc98bKgs?si=B2NXONXJ5Hmp6x67" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        <h4 class="cls-title"></h4>
+    <script>
+        const correctPassword = "yourpassword"; // Replace with your predefined password
 
-       ## class="iFrm-sz"
-
-    </div> -->
-    <div class="container">
-        <iframe class="iFrm-sz" src="https://www.youtube.com/embed/YWBtgaWORvA?si=DwqiGg5JBs7qQeCi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        <h4 class="cls-title">class-02</h4>
-    </div>
-
-    <div class="container">
-        <iframe class="iFrm-sz" src="https://www.youtube.com/embed/Y2919akqSF4?si=DY6kcFFGm7Ko7ku9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        <h4 class="cls-title">class-03</h4>
-    </div>
-    <div class="container">
-        <iframe class="iFrm-sz" src="https://www.youtube.com/embed/P1Fz_v9tpJI?si=mY3jEKk5JbTd1TOz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        <h4 class="cls-title">class-04</h4>
-    </div>
-    <div class="container">
-       
-        <h4 class="cls-title">class-05</h4>
-    </div>
-
-</section>
-
-<section class="sec-container hydra">
-
-
-    <br>
-    <br>
-    <h1 style="margin-top: 200px">testing only</h1>
-
-    <iframe frameborder="0" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; gyroscope; picture-in-picture;share" title="Player for Cycle 4 HSC'24 [ B2M Physics]  চল তড়িৎ Q n A Class" width="640" height="360" src="https://www.youtube.com/embed/QDvEdrd-slE?autoplay=0&amp;controls=0&amp;disablekb=1&amp;playsinline=1&amp;cc_load_policy=0&amp;cc_lang_pref=auto&amp;widget_referrer=https%3A%2F%2Fb2m25.aparsclassroom.com%2Fb2m25%2FCycle-4%2FArchive%2FClass-652987f6b18186f71c79d26c&amp;rel=0&amp;showinfo=0&amp;iv_load_policy=3&amp;modestbranding=1&amp;customControls=true&amp;noCookie=false&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fb2m25.aparsclassroom.com&amp;widgetid=1"></iframe>
-
-</section>
-
-
+        function checkPassword() {
+            const enteredPassword = document.getElementById("password").value;
+            if (enteredPassword === correctPassword) {
+                window.location.href = "underconstruction.html"; // Redirect to the next page
+            } else {
+                document.getElementById("message").textContent = "Incorrect password, please try again.";
+                return false; // Prevent form submission
+            }
+        }
+    </script>
 
 </body>
 </html>
