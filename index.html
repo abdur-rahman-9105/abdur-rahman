@@ -5,15 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Protected Page</title>
     <style>
-        body { font-family: Arial, sans-serif; }
-        .hidden { display: none; }
-        .login-container { text-align: center; padding: 50px; }
-        .message { font-size: 20px; }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc; /* Light background color */
+            color: #333; /* Dark text for readability */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+        .container {
+            background: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            width: 100%;
+            max-width: 400px;
+            padding: 40px;
+            text-align: center;
+        }
+        h2 {
+            font-size: 24px;
+            color: #333;
+        }
+        input[type="password"] {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .message {
+            font-size: 16px;
+            color: red;
+        }
+        .hidden {
+            display: none;
+        }
+        #protected {
+            text-align: center;
+            color: #333;
+        }
     </style>
 </head>
 <body>
-    <!-- Login Form -->
-    <div id="login" class="login-container">
+    <!-- Container for Login Form -->
+    <div id="login" class="container">
         <h2>Please Enter Password</h2>
         <input type="password" id="password" placeholder="Enter Password" />
         <button onclick="checkPassword()">Submit</button>
@@ -21,14 +76,14 @@
     </div>
 
     <!-- Protected Content -->
-    <div id="protected" class="hidden">
+    <div id="protected" class="hidden container">
         <h1>Welcome to the protected content!</h1>
         <p>This website is under construction, please check back later.</p>
     </div>
 
     <script>
         // Correct password set here
-        const correctPassword = "nahid05"; // Replace with your actual password
+        const correctPassword = "12345"; // Replace with your actual password
 
         // Function to check the entered password
         function checkPassword() {
