@@ -3,86 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Password Protected - Website Under Construction</title>
+    <title>Password Protected Page</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #1a1a1a;
-            color: white;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        h1 {
-            font-size: 48px;
-            color: #f2b632;
-        }
-        .form-container {
-            margin-top: 20px;
-        }
-        input[type="password"] {
-            padding: 10px;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            width: 250px;
-            margin-bottom: 10px;
-            background-color: #333;
-            color: white;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #f2b632;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #e1a227;
-        }
-        .message {
-            margin-top: 20px;
-            font-size: 20px;
-            color: #f2b632;
-        }
+        body { font-family: Arial, sans-serif; }
+        .hidden { display: none; }
+        .login-container { text-align: center; padding: 50px; }
+        .message { font-size: 20px; }
     </style>
 </head>
 <body>
+    <!-- Login Form -->
+    <div id="login" class="login-container">
+        <h2>Please Enter Password</h2>
+        <input type="password" id="password" placeholder="Enter Password" />
+        <button onclick="checkPassword()">Submit</button>
+        <p class="message" id="message"></p>
+    </div>
 
-    <div class="container">
-        <h1>Welcome to Our Website</h1>
-        <p>Please enter the password to proceed.</p>
-        <div class="form-container">
-            <form id="passwordForm" onsubmit="return checkPassword()">
-                <input type="password" id="password" placeholder="Enter Password" required>
-                <br>
-                <button type="submit">Enter</button>
-            </form>
-            <p class="message" id="message"></p>
-        </div>
+    <!-- Protected Content -->
+    <div id="protected" class="hidden">
+        <h1>Welcome to the protected content!</h1>
+        <p>This website is under construction, please check back later.</p>
     </div>
 
     <script>
-        const correctPassword = "6924ar"; // Replace with your predefined password
+        // Correct password set here
+        const correctPassword = "nahid05"; // Replace with your actual password
 
+        // Function to check the entered password
         function checkPassword() {
-            const enteredPassword = document.getElementById("password").value;
-            if (enteredPassword === correctPassword) {
-                window.location.href = "underconstruction.html"; // Redirect to the next page
+            const passwordInput = document.getElementById("password").value;
+            const message = document.getElementById("message");
+
+            // Check if password matches
+            if (passwordInput === correctPassword) {
+                // Hide login form and show protected content
+                document.getElementById("login").classList.add("hidden");
+                document.getElementById("protected").classList.remove("hidden");
             } else {
-                document.getElementById("message").textContent = "Incorrect password, please try again.";
-                return false; // Prevent form submission
+                // Show error message if password is incorrect
+                message.textContent = "Incorrect password. Please try again.";
+                message.style.color = "red";
             }
         }
     </script>
-
 </body>
 </html>
