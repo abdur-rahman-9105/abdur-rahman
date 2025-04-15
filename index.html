@@ -64,17 +64,30 @@
             text-align: center;
             color: #333;
         }
+
+        .cal {
+            width: 100px;
+            height: 30px;
+            padding: 5px;
+            align: center;
+            background: white;
+            color: green;
+            
+
+        }
     </style>
 </head>
 <body>
     <!-- Container for Login Form -->
+
+    
     <div id="login" class="container">
         <h2>Please Enter Password</h2>
         <input type="password" id="password" placeholder="Enter Password" />
         <button onclick="checkPassword()">Submit</button>
         <p class="message" id="message"></p>
     </div>
-
+<div class = "cal">Calculator. No login needed.<div/>
     <!-- Protected Content -->
     <div id="protected" class="hidden container">
         <h1>Welcome to the protected content!</h1>
