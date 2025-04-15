@@ -66,21 +66,19 @@
         }
 
         .cal {
-            width: 100px;
-            height: 30px;
-            padding: 5px;
-            align: center;
-            background: white;
-            color: green;
-            
 
-        }
-        .cal a {
             text-decoration: none;
             color: green;
+            padding: 10px;
+            align: center;
+            
             
 
         }
+
+  
+
+        
     </style>
 </head>
 <body>
@@ -91,9 +89,10 @@
         <h2>Please Enter Password</h2>
         <input type="password" id="password" placeholder="Enter Password" />
         <button onclick="checkPassword()">Submit</button>
+        <button><a class = "cal" href="calculator.html">Enter</a></button>
         <p class="message" id="message"></p>
     </div>
-<div class = "cal"><a href = "calculator.html" target = "_blank">Calculator</a>a<div/>
+
     <!-- Protected Content -->
     <div id="protected" class="hidden container">
         <h1>Welcome to the protected content!</h1>
