@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BizLink Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white p-4 shadow-md">
+      <h1 class="text-2xl font-bold mb-6">BizLink</h1>
+      <nav class="space-y-2">
+        <button class="block w-full text-left py-2 px-3 rounded hover:bg-gray-200">Dashboard</button>
+        <button class="block w-full text-left py-2 px-3 rounded hover:bg-gray-200">Tasks</button>
+        <button class="block w-full text-left py-2 px-3 rounded hover:bg-gray-200">Activity</button>
+        <button class="block w-full text-left py-2 px-3 rounded bg-gray-200">Customers</button>
+        <button class="block w-full text-left py-2 px-3 rounded hover:bg-gray-200">Settings</button>
+      </nav>
+    </aside>
+
+    <!-- Main content -->
+    <main class="flex-1 p-6">
+      <!-- Top Bar -->
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-xl font-semibold">Customers</h2>
+        <button id="addCustomerBtn" class="bg-black text-white px-4 py-2 rounded">+ Add customer</button>
+      </div>
+
+      <!-- Customer List -->
+      <div id="customerList" class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Customer cards will be injected here -->
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Sample data (will be loaded from localStorage)
+    let customers = JSON.parse(localStorage.getItem('customers')) || [
+      {
+        name: "ByteBridge",
+        description: "Corporate and personal data protection",
+        date: "18 Apr"
+      },
+      {
+        name: "SkillUp Hub",
+        description: "Platform for development of specialists",
+        date: "09 Mar"
+      }
+    ];
+
+    const customerList = document.getElementById("customerList");
+    const addCustomerBtn = document.getElementById("addCustomerBtn");
+
+    // Render customers
+    function renderCustomers() {
+      customerList.innerHTML = "";
+      customers.forEach((cust, index) => {
+        const card = document.createElement("div");
+        card.className = "bg-white p-4 rounded shadow flex flex-col justify-between";
+        card.innerHTML = `
+          <div>
+            <h3 class="font-bold text-lg">${cust.name}</h3>
+            <p class="text-sm text-gray-600">${cust.description}</p>
+            <p class="text-xs mt-2">📅 ${cust.date}</p>
+          </div>
+          <button class="mt-4 text-sm text-red-500 hover:underline" onclick="deleteCustomer(${index})">Remove</button>
+        `;
+        customerList.appendChild(card);
+      });
+      localStorage.setItem("customers", JSON.stringify(customers));
+    }
+
+    // Add new customer
+    addCustomerBtn.addEventListener("click", () => {
+      const name = prompt("Customer Name:");
+      if (!name) return;
+      const description = prompt("Description:") || "No description";
+      const date = new Date().toLocaleDateString("en-GB", {
+        day: '2-digit', month: 'short'
+      });
+      customers.push({ name, description, date });
+      renderCustomers();
+    });
+
+    // Delete customer
+    function deleteCustomer(index) {
+      customers.splice(index, 1);
+      renderCustomers();
+    }
+
+    // Initial render
+    renderCustomers();
+  </script>
+</body>
+
+</html>
