@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TopLevel Coming Soon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+    body, html {
+      height: 100%;
+    }
+    body {
+      background: url('citynight.jpg') no-repeat center center/cover;
+      color: white;
+      display: flex;
+      flex-direction: column;
+    }
+    nav {
+      width: 100%;
+      padding: 20px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 30px;
+      font-size: 14px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    nav a:hover, nav a.active {
+      color: #f7d84a;
+    }
+    .container {
+      display: flex;
+      flex: 1;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    .left, .right {
+      flex: 1;
+      padding: 40px;
+    }
+    .left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .left h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+    .countdown {
+      display: flex;
+      gap: 30px;
+      font-size: 36px;
+    }
+    .countdown div {
+      text-align: center;
+    }
+    .right h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+    .contact-info {
+      margin-bottom: 30px;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .contact-form input, .contact-form textarea {
+      padding: 10px;
+      border: none;
+      outline: none;
+      border-radius: 4px;
+    }
+    .contact-form button {
+      padding: 10px;
+      background-color: white;
+      color: black;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .contact-form button:hover {
+      background-color: #f7d84a;
+    }
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 30px;
+      font-size: 26px;
+      font-weight: bold;
+    }
+    .logo span {
+      color: #f7d84a;
+    }
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="logo"><span>TOP</span>LEVEL</div>
+  <nav>
+    <a href="#">ABOUT</a>
+    <a href="#" class="active">SERVICES</a>
+    <a href="#">SUBSCRIBE</a>
+    <a href="#">CONTACTS</a>
+  </nav>
+  <div class="container">
+    <div class="left">
+      <h1>OUR WEBSITE IS LAUNCHING SOON</h1>
+      <div class="countdown">
+        <div><span id="days">156</span><br />DAYS</div>
+        <div><span id="hours">16</span><br />HOURS</div>
+        <div><span id="minutes">46</span><br />MINUTES</div>
+        <div><span id="seconds">35</span><br />SECONDS</div>
+      </div>
+    </div>
+    <div class="right">
+      <h2>CONTACTS</h2>
+      <div class="contact-info">
+        ⭐ 578 Main Street London England<br />
+        📧 info@sunflowertheme.com<br />
+        📞 +1 (40) 123-45-67
+      </div>
+      <div class="contact-form">
+        <input type="text" placeholder="Name" />
+        <input type="email" placeholder="E-mail" />
+        <textarea rows="3" placeholder="Message"></textarea>
+        <button>SUBMIT</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional: JS to update timer dynamically later -->
+</body>
+</html>
