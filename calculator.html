@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Simple one-page site with a fun calculator and basic SEO setup." />
+  <title>Days Until Any Date 📅</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      color: #333;
+      text-align: center;
+    }
+    header {
+      padding: 1.5rem 1rem 0.5rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.2rem;
+    }
+    h2 {
+      font-size: 1.2rem;
+      font-weight: normal;
+      color: #555;
+    }
+    .calculator, .math-calculator {
+      margin: 2rem 0;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      max-width: 400px;
+      width: 90%;
+    }
+    input[type="date"], input[type="text"] {
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-top: 1rem;
+      width: 100%;
+    }
+    .days-result, .math-result {
+      font-size: 1.5rem;
+      color: #2c3e50;
+      margin-top: 1.5rem;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      margin-top: 1rem;
+      cursor: pointer;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    footer {
+      margin-top: auto;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+    a {
+      color: #3498db;
+      text-decoration: none;
+    }
+    .blog-section {
+      margin-top: 3rem;
+      padding: 2rem;
+      background: #eef1f5;
+      border-radius: 10px;
+      max-width: 600px;
+      width: 90%;
+      text-align: left;
+    }
+    .blog-section h3 {
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+    .ad-placeholder {
+      margin: 2rem auto;
+      background: #ccc;
+      width: 300px;
+      height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Days Until Your Date 📅</h1>
+    <h2>Select a date and see how many days are left or passed!</h2>
+  </header>
+
+  <div class="calculator">
+    <p>Today is <span id="today"></span></p>
+    <input type="date" id="datePicker" />
+    <p class="days-result" id="result-display">Days left: <strong id="days-left">—</strong></p>
+  </div>
+
+  <!-- New Section: Math Calculator -->
+  <div class="math-calculator">
+    <h3>🧮 Quick Math Calculator</h3>
+    <input type="text" id="mathInput" placeholder="e.g. 12 + 34 / 2" />
+    <button onclick="calculateExpression()">Calculate</button>
+    <p class="math-result" id="mathResult">Result: —</p>
+    <!-- You can modify this calculator easily by changing how expressions are handled below -->
+  </div>
+
+  <div class="ad-placeholder">Your Ad Here</div>
+
+  <div class="blog-section">
+    <h3>📝 Random Thoughts</h3>
+    <p>This is just a simple one-pager to test static site performance, traffic, and ad setup. You can replace this section with real blog content, tips, reviews, or anything you want to share.</p>
+    <p>Fun idea? Maybe a daily countdown challenge or a motivational message every day.</p>
+  </div>
+
+  <footer>
+    Made with ❤️ by <a href="#">YourName</a> • You can customize this however you want.
+  </footer>
+
+  <script>
+    // Date Calculator Logic
+    const todayEl = document.getElementById("today");
+    const daysLeftEl = document.getElementById("days-left");
+    const datePicker = document.getElementById("datePicker");
+    const resultDisplay = document.getElementById("result-display");
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Normalize time to midnight
+    todayEl.textContent = today.toDateString();
+
+    datePicker.addEventListener("change", () => {
+      const selectedDate = new Date(datePicker.value);
+      selectedDate.setHours(0, 0, 0, 0);
+
+      if (isNaN(selectedDate)) {
+        resultDisplay.innerHTML = `Days left: <strong>—</strong>`;
+        return;
+      }
+
+      const timeDiff = selectedDate - today;
+      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+
+      if (days > 0) {
+        resultDisplay.innerHTML = `Days left: <strong>${days}</strong>`;
+      } else if (days < 0) {
+        resultDisplay.innerHTML = `Days passed: <strong>${Math.abs(days)}</strong>`;
+      } else {
+        resultDisplay.innerHTML = `That's today! 🎉`;
+      }
+    });
+
+    // Basic Math Expression Calculator Logic
+    function calculateExpression() {
+      const input = document.getElementById("mathInput").value;
+      const resultEl = document.getElementById("mathResult");
+
+      try {
+        // Evaluate the expression using JavaScript's eval (for basic use only)
+        // You can replace this with a custom parser for more control & safety
+        const result = eval(input);
+        resultEl.textContent = `Result: ${result}`;
+      } catch (err) {
+        resultEl.textContent = "Result: Invalid expression ❌";
+      }
+    }
+  </script>
+</body>
+</html>
